@@ -5,6 +5,14 @@
     box-sizing: border-box;
 }
 
+:root {
+    --nomiah-blue: #0B2F5B;
+    --nomiah-blue-alt: #0A3A6A;
+    --nomiah-grey: #B0B6BC;
+    --nomiah-dark: #1F2933;
+    --nomiah-border: #E5E7EB;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -14,13 +22,13 @@ body {
                  Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
                  "Helvetica Neue", sans-serif;
     background-color: #ffffff;
-    color: #111111;
+    color: var(--nomiah-dark);
     line-height: 1.6;
 }
 
 /* LINKS */
 a {
-    color: inherit;
+    color: var(--nomiah-blue);
     text-decoration: none;
 }
 
@@ -29,7 +37,7 @@ a {
     position: absolute;
     top: -40px;
     left: 0;
-    background: #000;
+    background: var(--nomiah-blue);
     color: #fff;
     padding: 8px 12px;
     z-index: 100;
@@ -42,7 +50,7 @@ a {
 /* NAVBAR */
 .navbar {
     width: 100%;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid var(--nomiah-border);
     background: #ffffff;
     position: sticky;
     top: 0;
@@ -58,12 +66,13 @@ a {
     align-items: center;
 }
 
-.logo {
-    font-size: 1.4rem;
-    font-weight: 700;
-    letter-spacing: 1px;
+.logo img {
+    height: 42px;
+    width: auto;
+    display: block;
 }
 
+/* NAVIGATION */
 .nav-links {
     list-style: none;
     display: flex;
@@ -73,18 +82,23 @@ a {
 .nav-links a {
     font-size: 0.95rem;
     font-weight: 500;
-    color: #333;
+    color: var(--nomiah-dark);
+}
+
+.nav-links a:hover {
+    color: var(--nomiah-blue);
 }
 
 .nav-cta {
     padding: 8px 14px;
-    border: 1px solid #111;
+    border: 1px solid var(--nomiah-blue);
     border-radius: 6px;
+    color: var(--nomiah-blue);
     transition: background 0.2s ease, color 0.2s ease;
 }
 
 .nav-cta:hover {
-    background: #111;
+    background: var(--nomiah-blue);
     color: #fff;
 }
 
@@ -93,6 +107,37 @@ a {
     max-width: 1200px;
     margin: 0 auto;
     padding: 120px 24px 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* HERO BACKGROUND IMAGE (BLURRED) */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("assets/images/hero-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(7px);
+    transform: scale(1.1);
+    opacity: 0.35;
+    z-index: -2;
+}
+
+/* HERO OVERLAY FOR READABILITY */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.78);
+    z-index: -1;
+}
+
+/* ENSURE HERO CONTENT STAYS SHARP */
+.hero * {
+    position: relative;
+    z-index: 1;
 }
 
 .hero h1 {
@@ -100,6 +145,17 @@ a {
     font-weight: 700;
     max-width: 700px;
     line-height: 1.15;
+    color: var(--nomiah-blue);
+}
+
+.hero h1::after {
+    content: "";
+    display: block;
+    width: 72px;
+    height: 4px;
+    margin-top: 16px;
+    border-radius: 4px;
+    background: var(--nomiah-blue);
 }
 
 .hero p {
@@ -109,11 +165,12 @@ a {
     max-width: 600px;
 }
 
+/* BUTTONS */
 .btn {
     display: inline-block;
     margin-top: 32px;
     padding: 14px 28px;
-    background: #111;
+    background: var(--nomiah-blue);
     color: #fff;
     border-radius: 8px;
     font-size: 0.95rem;
@@ -123,7 +180,7 @@ a {
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(11, 47, 91, 0.25);
 }
 
 /* SECTIONS */
@@ -136,6 +193,7 @@ section {
 section h2 {
     font-size: 2rem;
     margin-bottom: 20px;
+    color: var(--nomiah-blue);
 }
 
 section p {
@@ -151,21 +209,27 @@ section p {
 
 .services-list li {
     padding: 12px 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--nomiah-border);
     font-size: 1rem;
 }
 
 /* CONTACT */
 .contact a {
     font-weight: 500;
-    color: #000;
+    color: var(--nomiah-blue);
 }
 
 /* FOOTER */
 .footer {
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid var(--nomiah-border);
     padding: 40px 24px;
     text-align: center;
     font-size: 0.85rem;
     color: #666;
+}
+
+.footer img {
+    display: block;
+    margin: 0 auto 8px;
+    opacity: 0.8;
 }
